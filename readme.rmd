@@ -1,0 +1,9 @@
+เพิ่ม extenstion Robot Framework Intellisense ใน vscode 
+
+ใส่ framework ใน requirement.txt
+
+เเล้วติดตั้งทีเดียวด้วย pip install -r requirements.txt
+
+สร้างไฟล์ login.robot เเล้วใส่โค๊ดเข้าไปเเล้ว รันด้วย
+
+robot login.robot

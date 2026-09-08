@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.15.0a1 on win32)" generated="2026-09-08T09:54:47.612879" rpa="false" schemaversion="5">
+<suite id="s1" name="Login" source="C:\Users\Administrator\Desktop\New folder\login.robot">
+<test id="s1-t1" name="Successful Login" line="10">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-08T09:54:47.898647" level="INFO">Opening browser 'chrome' to base url 'https://seleniumbase.io/simple/login'.</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>chrome</arg>
+<arg>options=page_load_strategy="normal"</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-08T09:54:47.898402" elapsed="1.072314"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-09-08T09:54:48.971208" elapsed="0.029342"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-08T09:54:49.001419" level="INFO">Typing text 'demo_user' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${VALID_USER}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-08T09:54:49.000909" elapsed="0.077840"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-08T09:54:49.079286" level="INFO">Typing text 'secret_pass' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${VALID_PASS}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-08T09:54:49.079016" elapsed="0.050539"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-09-08T09:54:49.130014" level="INFO">Clicking element 'id=log-in'.</msg>
+<arg>id=log-in</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-08T09:54:49.129805" elapsed="0.148492"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Welcome!</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-09-08T09:54:49.278653" elapsed="0.010103"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-09-08T09:54:49.289353" level="INFO">Verifying element 'xpath=//h1' contains exact text 'Welcome!'.</msg>
+<arg>xpath=//h1</arg>
+<arg>Welcome!</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-09-08T09:54:49.289048" elapsed="0.021405"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-09-08T09:54:49.310842" elapsed="2.115418"/>
+</kw>
+<status status="PASS" start="2026-09-08T09:54:47.897564" elapsed="3.529055"/>
+</test>
+<status status="PASS" start="2026-09-08T09:54:47.614142" elapsed="3.813798"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Login" id="s1" pass="1" fail="0" skip="0">Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

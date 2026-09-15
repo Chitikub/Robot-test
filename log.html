@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 7.4.2 (Python 3.15.0a1 on win32)" name="Generator">
+<meta content="Robot Framework 7.5 (Python 3.14.0b3 on win32)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all">
 :root {
@@ -574,6 +574,22 @@ th.stats-col-graph:hover {
 .metadata td {
     vertical-align: top;
 }
+.metadata .tags {
+    display: flex;
+    flex-wrap: wrap;
+}
+.metadata .tags .label {
+    font-size: 1em;
+    margin: 0 7px 2px 0;
+    padding: 1px 5px;
+    letter-spacing: normal;
+}
+/* https://stackoverflow.com/questions/75238633 */
+@supports (-moz-appearance: none) {
+    .metadata .tags .label {
+        padding-top: 3px;
+    }
+}
 .keyword-metadata {
     font-size: 0.9em;
 }
@@ -1119,6 +1135,7 @@ window.model = (function () {
         test.fullName = data.parent.fullName + '.' + test.name;
         test.formatParentName = function () { return util.formatParentName(test); };
         test.timeout = data.timeout;
+        test.metadata = data.metadata;
         test.populateKeywords = createIterablePopulator('Keyword');
         test.childrenNames = ['keyword'];
         test.isChildrenLoaded = data.isChildrenLoaded;
@@ -1567,7 +1584,7 @@ window.testdata = function () {
             timeout: strings.get(element[3]),
             args: strings.get(element[5]),
             assign: strings.get(element[6]),
-            tags: strings.get(element[7]),
+            tags: tags(element[7], strings),
             doc: function () {
                 var doc = strings.get(element[4]);
                 this.doc = function () { return doc; };
@@ -1602,7 +1619,7 @@ window.testdata = function () {
         return util.map(taglist, strings.get);
     }
     function createTest(parent, element, strings, index) {
-        var status = element[4];
+        var status = element[5];
         var test = model.Test({
             parent: parent,
             id: 't' + (index + 1),
@@ -1613,6 +1630,7 @@ window.testdata = function () {
                 return doc;
             },
             timeout: strings.get(element[1]),
+            metadata: parseMetadata(element[4], strings),
             status: parseStatus(status),
             message: function () {
                 var msg = status.length == 4 ? strings.get(status[3]) : '';
@@ -1621,9 +1639,9 @@ window.testdata = function () {
             },
             times: model.Times(times(status)),
             tags: tags(element[3], strings),
-            isChildrenLoaded: typeof(element[5]) !== 'number'
+            isChildrenLoaded: typeof(element[6]) !== 'number'
         });
-        lazyPopulateKeywordsFromFile(test, element[5], strings);
+        lazyPopulateKeywordsFromFile(test, element[6], strings);
         return test;
     }
     function createSuite(parent, element, strings, index) {
@@ -2073,25 +2091,25 @@ storage = function () {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,0,[],[1,0,3814],[],[[4,0,0,[],[1,284,3529],[[0,5,6,0,7,8,0,0,[1,284,1072],[[285,2,9]]],[0,10,6,0,11,0,0,0,[1,1357,29],[]],[0,12,6,0,13,14,0,0,[1,1387,78],[[1387,2,15]]],[0,12,6,0,13,16,0,0,[1,1465,51],[[1465,2,17]]],[0,18,6,0,19,20,0,0,[1,1516,148],[[1516,2,21]]],[0,22,6,0,23,24,0,0,[1,1665,10],[]],[0,25,6,0,26,27,0,0,[1,1675,21],[[1675,2,28]]],[2,29,6,0,30,0,0,0,[1,1697,2115],[]]]]],[],[1,1,0,0]];
+window.output["suite"] = [1,2,3,0,[],[1,0,803],[[4,5,6,0,[],[1,32,422],[],[[7,0,0,[],[],[1,105,347],[[0,8,9,0,10,11,12,[],[1,105,343],[[447,2,13],[448,2,14],[448,2,15]]],[0,16,9,0,17,18,0,[],[1,450,1],[]]]]],[],[1,1,0,0]],[19,20,21,0,[],[1,457,345],[],[[22,0,0,[],[],[1,464,338],[[0,8,9,0,10,23,12,[],[1,464,334],[[798,2,24],[798,2,25],[798,2,15]]],[0,16,9,0,17,18,0,[],[1,799,0],[]],[0,26,27,0,28,29,0,[],[1,799,0],[[800,2,30]]],[0,26,27,0,28,31,0,[],[1,800,0],[[800,2,32]]],[0,33,27,0,34,35,0,[],[1,801,0],[[801,2,36]]]]]],[],[1,1,0,0]]],[],[],[2,2,0,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*Login","*C:\\Users\\Administrator\\Desktop\\New folder\\login.robot","*login.robot","*Successful Login","*Open Browser","*SeleniumLibrary","*<p>Opens a new browser instance to the optional <code>url\x3c/code>.\x3c/p>","*${LOGIN_URL}    chrome    options=page_load_strategy=\"normal\"","*Opening browser 'chrome' to base url '<a href=\"https://seleniumbase.io/simple/login\">https://seleniumbase.io/simple/login\x3c/a>'.","*Maximize Browser Window","*<p>Maximizes current browser window.\x3c/p>","*Input Text","*<p>Types the given <code>text\x3c/code> into the text field identified by <code>locator\x3c/code>.\x3c/p>","*id=username    ${VALID_USER}","*Typing text 'demo_user' into text field 'id=username'.","*id=password    ${VALID_PASS}","*Typing text 'secret_pass' into text field 'id=password'.","*Click Element","*<p>Click the element identified by <code>locator\x3c/code>.\x3c/p>","*id=log-in","*Clicking element 'id=log-in'.","*Wait Until Page Contains","*<p>Waits until <code>text\x3c/code> appears on the current page.\x3c/p>","*Welcome!    10s","*Element Text Should Be","*<p>Verifies that element <code>locator\x3c/code> contains exact the text <code>expected\x3c/code>.\x3c/p>","*xpath=//h1    Welcome!","*Verifying element 'xpath=//h1' contains exact text 'Welcome!'.","*Close Browser","*<p>Closes the current browser.\x3c/p>"]);
+window.output["strings"] = window.output["strings"].concat(["*","*Api","*C:\\Users\\Administrator\\Desktop\\New folder\\Robot-test\\api","*api","*Test","*C:\\Users\\Administrator\\Desktop\\New folder\\Robot-test\\api\\test.robot","*api/test.robot","*Get User","*GET","*RequestsLibrary","*<p>Sends a GET request.\x3c/p>","*${BASE_URL}/users/1","*${response}","*GET Request : url=https://jsonplaceholder.typicode.com/users/1 \n path_url=/users/1 \n headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} \n body=None \n ","eNqtVd9T4zYQfuev0HjmykOj4J9xEsbTUg7SKxeuJUw7tNdhNvba1mFLRpKBwOR/ryQHOK4vfeiLx95vV7vf6tv14uSSXKDqBFdI5qSXTVZr3an5wcEXJXjXQI61aAqUY73pWC4KHOeiPegVSnUQkD2iNOheZaHvj4hEMEHZpzNjrxFMlMqe9t+Dxv052b/scUSChKywI6EfTogfz5NknvhksbzcH5H9Y8E1ck0vN50LgK5rWA6aCe6qOSR5DVKhznpd0qkNuZTAVYmSnnBTG+OVjcvrnt9gsTuSY25PsMANYkehYXdoMchzVIrmJqsUjbE34p7mEgtTA4NG2Qgte+d7DHmN9HhwtUALDxQqzOLIMLceqMEl/+PAC8qCfh9eRYvo3o9nbPWnvk900D6ueM95deI594eOSXQ5aGANHN25T57ETkh9rYU392qU4qanBvNGBhju6XrXWm/+l/c7A+/vkWequTbVePNoYu7BU72jdl1KcNy9uT/2g5FXAmt6iW/swdZm7yRULdgCuKC5JWutQylUi6GySoq++7Yq5EUnGNe2nCfPCMg67CRkPMaDsxPNcJz6QWW3v+jb5fJimVT98ektJH3uny0WV3dXy3fhaXB2niyK5Gi1OZnJi/Pf3kXvP3/ufaMYxYoMgyD10yKhfggpjSMs6TpOkIZ5GRehH03KtNi5a5UF6XQWB1EwSbztt33avlI0wqEvRCzZV4rZ/8/mO2i7w//KxTm/ZWLrXqG8Q+nU3oi+KBuQ7sruQG6s9ZNkFeMjcmSU0OnX8bAuzF10OPbJjqa5V20OM9iDGwc7hGbckYrOykQNulCcleXg1Il7NINC1y7XyUNntKkGSJppb1jLNHVPiwf+MCJfgxJbYHw3sLM0/Tdu5twFD7zDwM37UeU2w8T0zX7m5SBWOmwhC/384c0u+XovPCo9LIVTenF05TZMtE58mKFptJ+ug5iuPpy71dBoqu5yp4Qo8+ZxHHmHpIVsOokNl63Zb2tRbLKnPUI8VnhzEozsK4fWiIt4HxHM3iELCTW0noPsxnyGf5KoB6vtQmNNK8Zz09IfoZOsGa/Z44BDUdjWGg+byhiUlmiCTcRZ34AiH1lVD2dZsGfaJTjq9JgkyeQZyJneWPviHvlamOuu6mfokXV2q1t0Fs5mUxpN0/gZrFC8pDafDbjMNErHUZDMdl4W4JUFpsE4iGcTz5m35rl1JLpacJcgoGnq0zSa0KkfBeQhmcRxOBC9x7XaFV8z87+pQBZjIasBNfPWAd+8tuG5kxeihapHCfRYCg4vfEHn9a+1BOW8ln2jGW1gY0VL8oZZZSg3QYRjL6Exk/7SxbVyVYDkpvP2n9ZQzVokSFuQN2g2nWW2Z0XwDz5IL0Y=","*${response} = &lt;Response [200]&gt;","*Status Should Be","*<p>Fails if response status code is different than the expected.\x3c/p>","*200    ${response}","*Test2","*C:\\Users\\Administrator\\Desktop\\New folder\\Robot-test\\api\\test2.robot","*api/test2.robot","*Get Post By Id","*${BASE_URL}/posts/1","*GET Request : url=https://jsonplaceholder.typicode.com/posts/1 \n path_url=/posts/1 \n headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} \n body=None \n ","eNqtVF1PIzcUfedXWCNteYlhPjIJBI0qFlgKy5ZqybZLS4Ucz53EMGM7/ggExH/vtScty6oPfagUjSa+517fM/fcc3oyJZ/BaiUtkAnxpq0Wzmk72d29s0rqlnFYqLYGs+PWWnBVww5X3a5W1tndjGwR65jztsrTdEAMMEyqLj/i+QIYZtnqefuYOdiekO2phwHJSnIFmuRpPiLpcFKWkzIjp5+m2wOyfaSkA+nodK1jAtO6FZw5oWTs5oDwBTMWXOVdQ/dCytQwaRsw9ERib0LOQx5feHkP9aakBB4qhMA9gKasFSsIMcY5WEs53mpUi+eteqDcQI09CNbakOGMj9gjxhdAj3poCHTskbI5VMMCmQcEOBYv/203yfIhXYuP9cXT8rKcN+/N+QfD6/O962V6cSq/JBH+qIWBeAfNwoGEWPc5MaCVcbdOJZNkAUbde4qxZICBfk63m0+bTP5IfhUs+XOQYDe32E0yKUY4h8T6SO22MSxyTybpTpoNkoaJ1ht4c569hNu1YfOOhQakojyQDad9K9SpvrO5UV5/3xXIWishXWjnOUEBBcBGQojY6cFRNH05+6Otfjku2O/l+ddOfr24mPlP+2u/zu8e5qN72PtSHuXXy3f5+2kK5un+Ln1XHN/c+BQVY0VdQZaN03Fd0jRnYzosoKGzYQk0582wztNi1IzrDdzZKhuPy3G+X4z3kpfvv9PLK0UUDv2HSCD7SrH6/9n8wDp98F+5RPBbJqHvKzArMFHtrfJ10zITR7ZiZh1OL42YCzkgh6gE7V7XI0BEHHS+k5INTZyrw2IYe4zrEJYQ1x2o0kEmtteFlaJpepBWD4CLQmfxrpNHjdq0fcjgtreiE47GZ4hnab8i3wYNdEzIzcKOi3+J457H5A3v/SJADufRGfJhWcT9502vVtrbUIj9dPbGTL41hifrelf4QD8fXkeLKWZlyli63zTQ1KMZvTr7OXpD66hd8SiFokomw2GRHJCOVXujIZJ5QYObqXpdPW8RkngL5qxOJiQbhL/i9dUJ16LaCG6kdIR5Rxo0VAPolBraljmijVqJ4DhEcc4guB2BxzAzbwSJ3z+ADSxQn2CES2LhcHmou/SCEXDEesuFFu5G/v2GWdxbJmsGhAfbWHrswRusrqEWLqZx393IN+VJp1qw6H9AsFv8LT2zxCnHEIkaQEPssHR4IixQgo5EdjhRAiuQAusywxfCofGqZCt8q78AlLwP/A==","*Log","*BuiltIn","*<p>Logs the given message with the given level.\x3c/p>","*${response.text}","eNpVj0FqBEEIRfdzCqn1bLLNDXKH2RjrhxG6q6otHRJC7h6rIYQBkS/+/9DvC1GJCXur5ZVermvUf+nqG3IqM5oTh9MHCwxkGNg2dhrWH1qR2y7CEHYlfAqGhyn14dqX2XBHqzD1coLfe/1a3COUCU4zpuhQv7U/lSmJya0ySHqbOCJvCEv6QFU/YxL7rT3hae8bpmum8tqsI3iSd+d0tj7dYk/06mlbL2Gn8ztLgQeaJpdN7uoQ7+Xy8wvn8GiF","*${response.json()}","eNpVjzFqQ0EMRK+ibps0bn2D3MGNop1gwf+r/VrJJITcPfoGFwEhBjTzGP20XPD33q50eaOmLxEaG0q3lSOIM+iTBQ5yTGwbB023h3bU1UQYwqGEL8GMdCWboXaaHXeMDtdohf2w/n1Sj1QmBK1colPjNl6qMpKLR2eQ2Fg4shqkF3uiazxjkvtt/IPTbhtWaKWqa82RvCgsuJzDVnjuhT532c6HsNPzNy+BB4YWl13uGpCw9vsHiH1n7w==","*Should Be Equal As Integers","*<p>Fails if objects are unequal after converting them to integers.\x3c/p>","*${response.json()}[id]    1","*Argument types are:\n&lt;class 'int'&gt;\n&lt;class 'str'&gt;"]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:04","fail":0,"label":"All Tests","pass":1,"skip":0}],[],[{"elapsed":"00:00:04","fail":0,"id":"s1","label":"Login","name":"Login","pass":1,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:00:01","fail":0,"label":"All Tests","pass":2,"skip":0}],[],[{"elapsed":"00:00:01","fail":0,"id":"s1","label":"Api","name":"Api","pass":2,"skip":0},{"elapsed":"00:00:00","fail":0,"id":"s1-s1","label":"Api.Test","name":"Test","pass":1,"skip":0},{"elapsed":"00:00:00","fail":0,"id":"s1-s2","label":"Api.Test2","name":"Test2","pass":1,"skip":0}]];
 </script>
 <script type="text/javascript">
 window.output["errors"] = [];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1788836087614;
+window.output["baseMillis"] = 1789448181631;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 3820;
+window.output["generated"] = 808;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
@@ -2355,10 +2373,16 @@ function addExecutionLog(main) {
           <td class="doc">{{html doc()}}</td>
         </tr>
         {{/if}}
+        {{each metadata}}
+        <tr>
+          <th>{{html $value[0]}}:</th>
+          <td class="doc">{{html $value[1]}}</td>
+        </tr>
+        {{/each}}
         {{if tags.length}}
         <tr>
           <th>Tags:</th>
-          <td>{{html tags.join(', ')}}</td>
+          <td><div class="tags">{{each tags}}<span class="label">{{html $value}}</span>{{/each}}</div></td>
         </tr>
         {{/if}}
         {{if timeout}}
@@ -2411,10 +2435,10 @@ function addExecutionLog(main) {
           <td class="doc">{{html doc()}}</td>
         </tr>
         {{/if}}
-        {{if tags}}
+        {{if tags.length}}
         <tr>
           <th>Tags:</th>
-          <td>{{html tags}}</td>
+          <td><div class="tags">{{each tags}}<span class="label">{{html $value}}</span>{{/each}}</div></td>
         </tr>
         {{/if}}
         {{if timeout}}

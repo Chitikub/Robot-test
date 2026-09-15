@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.5 (Python 3.14.0b3 on win32)" generated="2026-09-15T11:39:27.295662" rpa="false" schemaversion="5">
+<suite id="s1" name="Ts1001-Login" source="C:\Users\Administrator\Desktop\New folder\Robot-test\tests-feature-1\ts1001-login.robot">
+<test id="s1-t1" name="Login with wrong username" line="7">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:27.577070" level="INFO">Opening browser 'chrome' to base url 'https://seleniumbase.io/simple/login'.</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-15T11:39:27.576823" elapsed="0.955242"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:28.532867" level="INFO">Typing text 'user' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${INVALID_USER}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:39:28.532456" elapsed="0.057681"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:28.590726" level="INFO">Typing text 'secret_pass' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${VALID_PASS}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:39:28.590454" elapsed="0.042937"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:28.634200" level="INFO">Clicking element 'id=log-in'.</msg>
+<arg>id=log-in</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:39:28.633856" elapsed="0.042180"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=top_message</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-09-15T11:39:28.676458" elapsed="0.013235"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:28.690212" level="INFO">Verifying element 'id=top_message' contains exact text 'Invalid Username!'.</msg>
+<arg>id=top_message</arg>
+<arg>Invalid Username!</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-09-15T11:39:28.689960" elapsed="0.014305"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:28.882144" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-09-15T11:39:28.704657" elapsed="0.177582"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-09-15T11:39:28.882638" elapsed="2.126158"/>
+</kw>
+<status status="PASS" start="2026-09-15T11:39:27.575792" elapsed="3.433539"/>
+</test>
+<test id="s1-t2" name="Login with wrong password" line="20">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:31.012348" level="INFO">Opening browser 'chrome' to base url 'https://seleniumbase.io/simple/login'.</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-15T11:39:31.011909" elapsed="0.936308"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:31.948793" level="INFO">Typing text 'demo_user' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${VALID_USER}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:39:31.948515" elapsed="0.059750"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:32.009355" level="INFO">Typing text 'secret' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${INVALID_PASS}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:39:32.008877" elapsed="0.043806"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:32.053187" level="INFO">Clicking element 'id=log-in'.</msg>
+<arg>id=log-in</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:39:32.052967" elapsed="0.046195"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=top_message</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-09-15T11:39:32.099473" elapsed="0.013718"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:32.113765" level="INFO">Verifying element 'id=top_message' contains exact text 'Invalid Password!'.</msg>
+<arg>id=top_message</arg>
+<arg>Invalid Password!</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-09-15T11:39:32.113482" elapsed="0.014635"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:32.277413" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="ts2-wrong-password.png"&gt;&lt;img src="ts2-wrong-password.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>filename=ts2-wrong-password.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-09-15T11:39:32.128484" elapsed="0.149054"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-09-15T11:39:32.277985" elapsed="2.118143"/>
+</kw>
+<status status="PASS" start="2026-09-15T11:39:31.010695" elapsed="3.385721"/>
+</test>
+<status status="PASS" start="2026-09-15T11:39:27.296921" elapsed="7.100371"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Ts1001-Login" id="s1" pass="2" fail="0" skip="0">Ts1001-Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

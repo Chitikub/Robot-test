@@ -2,8 +2,28 @@
 
 ใส่ framework ใน requirement.txt
 
-เเล้วติดตั้งทีเดียวด้วย pip install -r requirements.txt
+เเล้วติดตั้งทีเดียวด้วย 
+
+pip install -r requirements.txt
 
 สร้างไฟล์ login.robot เเล้วใส่โค๊ดเข้าไปเเล้ว รันด้วย
 
 robot login.robot
+
+**options=page_load_strategy="normal"
+บางครั้งต้องใช้ 
+
+ใน resources มี keyword เเละ variable 
+
+keyword จะใส่ เป็นเหมือนตัวคียลัดจะได้ไม่ต้องใส่ในcodeให่ยาว
+variable จะเป็นการใส่สภาพเเวดล้อมในการเทส
+
+เปิด .venv
+python -m venv .venv
+.venv\Scripts\activate.bat
+
+อยากได้ test เเล้วสร้างfolder พร้อมมี output ใช้ 
+robot --outputdir ชื่อfolderที่ต้องการสร้าง  .\ชื่อfolderที่ต้องการเทส\ไฟล์เทส
+
+รวม merge output.xml ในcase เดียวกันเท่านั้น ใช้
+rebot  --merge  --output  merged.xml .\ชื่อfolderที่ต้องการmerge\output.xml .\ชื่อfolderที่ต้องการmerge\output.xml

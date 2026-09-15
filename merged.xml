@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Rebot 7.5 (Python 3.14.0b3 on win32)" generated="2026-09-15T11:40:36.430938" rpa="false" schemaversion="5">
+<suite id="s1" name="Ts1001-Login" source="C:\Users\Administrator\Desktop\New folder\Robot-test\tests-feature-1\ts1001-login.robot">
+<test id="s1-t1" name="Successful Login" line="8">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:51.238545" level="INFO">Opening browser 'chrome' to base url 'https://seleniumbase.io/simple/login'.</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-15T11:38:51.238295" elapsed="0.947291"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:52.186426" level="INFO">Typing text 'demo_user' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${VALID_USER}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:38:52.186000" elapsed="0.058647"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:52.245257" level="INFO">Typing text 'secret_pass' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${VALID_PASS}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:38:52.244973" elapsed="0.045053"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:52.290541" level="INFO">Clicking element 'id=log-in'.</msg>
+<arg>id=log-in</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:38:52.290311" elapsed="0.197821"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:52.608234" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-09-15T11:38:52.488470" elapsed="0.119877"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-09-15T11:38:52.608715" elapsed="2.112695"/>
+</kw>
+<doc>Test case to login Successful</doc>
+<status status="PASS" start="2026-09-15T11:38:51.237216" elapsed="3.484896"/>
+</test>
+<test id="s1-t2" name="Successful Login with Validate" line="17">
+<kw name="Login with Successful" owner="keyword">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:54.727030" level="INFO">Opening browser 'chrome' to base url 'https://seleniumbase.io/simple/login'.</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-15T11:38:54.726623" elapsed="0.927707"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:55.655627" level="INFO">Typing text 'demo_user' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${VALID_USER}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:38:55.654639" elapsed="0.063343"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:55.718460" level="INFO">Typing text 'secret_pass' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${VALID_PASS}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:38:55.718179" elapsed="0.045708"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:55.764294" level="INFO">Clicking element 'id=log-in'.</msg>
+<arg>id=log-in</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:38:55.764072" elapsed="0.196761"/>
+</kw>
+<status status="PASS" start="2026-09-15T11:38:54.725476" elapsed="1.235484"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//h1</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-09-15T11:38:55.961195" elapsed="0.016557"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:55.978276" level="INFO">Verifying element 'xpath=//h1' contains exact text 'Welcome!'.</msg>
+<arg>xpath=//h1</arg>
+<arg>Welcome!</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-09-15T11:38:55.978040" elapsed="0.010563"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:56.087616" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="validate1.png"&gt;&lt;img src="validate1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>filename=validate1.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-09-15T11:38:55.989226" elapsed="0.098492"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-09-15T11:38:56.088116" elapsed="2.105449"/>
+</kw>
+<status status="PASS" start="2026-09-15T11:38:54.723953" elapsed="3.470054"/>
+</test>
+<test id="s1-t3" name="Successful Login with Validate Text and Image" line="27">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:58.196065" level="INFO">Opening browser 'chrome' to base url 'https://seleniumbase.io/simple/login'.</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-15T11:38:58.195814" elapsed="0.903914"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:59.100345" level="INFO">Typing text 'demo_user' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${VALID_USER}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:38:59.100086" elapsed="0.058814"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:59.159532" level="INFO">Typing text 'secret_pass' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${VALID_PASS}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:38:59.159261" elapsed="0.046984"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:59.206803" level="INFO">Clicking element 'id=log-in'.</msg>
+<arg>id=log-in</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:38:59.206567" elapsed="0.186838"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Welcome!</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-09-15T11:38:59.393695" elapsed="0.009310"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:59.403537" level="INFO">Verifying element 'xpath=//h1' contains exact text 'Welcome!'.</msg>
+<arg>xpath=//h1</arg>
+<arg>Welcome!</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-09-15T11:38:59.403280" elapsed="0.014128"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:59.423667" level="INFO">Current page contains element 'id=image1'.</msg>
+<arg>id=image1</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-09-15T11:38:59.417692" elapsed="0.006056"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:59.515517" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="validate2.png"&gt;&lt;img src="validate2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>filename=validate2.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-09-15T11:38:59.424042" elapsed="0.091600"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-09-15T11:38:59.516030" elapsed="2.123486"/>
+</kw>
+<status status="PASS" start="2026-09-15T11:38:58.194929" elapsed="3.446001"/>
+</test>
+<test id="s1-t4" name="Login with wrong username" line="7">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:27.577070" level="INFO">Opening browser 'chrome' to base url 'https://seleniumbase.io/simple/login'.</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-15T11:39:27.576823" elapsed="0.955242"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:28.532867" level="INFO">Typing text 'user' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${INVALID_USER}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:39:28.532456" elapsed="0.057681"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:28.590726" level="INFO">Typing text 'secret_pass' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${VALID_PASS}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:39:28.590454" elapsed="0.042937"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:28.634200" level="INFO">Clicking element 'id=log-in'.</msg>
+<arg>id=log-in</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:39:28.633856" elapsed="0.042180"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=top_message</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-09-15T11:39:28.676458" elapsed="0.013235"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:28.690212" level="INFO">Verifying element 'id=top_message' contains exact text 'Invalid Username!'.</msg>
+<arg>id=top_message</arg>
+<arg>Invalid Username!</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-09-15T11:39:28.689960" elapsed="0.014305"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:28.882144" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-09-15T11:39:28.704657" elapsed="0.177582"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-09-15T11:39:28.882638" elapsed="2.126158"/>
+</kw>
+<status status="PASS" start="2026-09-15T11:39:27.575792" elapsed="3.433539">*HTML* Test added from merged output.</status>
+</test>
+<test id="s1-t5" name="Login with wrong password" line="20">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:31.012348" level="INFO">Opening browser 'chrome' to base url 'https://seleniumbase.io/simple/login'.</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-15T11:39:31.011909" elapsed="0.936308"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:31.948793" level="INFO">Typing text 'demo_user' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${VALID_USER}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:39:31.948515" elapsed="0.059750"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:32.009355" level="INFO">Typing text 'secret' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${INVALID_PASS}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:39:32.008877" elapsed="0.043806"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:32.053187" level="INFO">Clicking element 'id=log-in'.</msg>
+<arg>id=log-in</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:39:32.052967" elapsed="0.046195"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=top_message</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-09-15T11:39:32.099473" elapsed="0.013718"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:32.113765" level="INFO">Verifying element 'id=top_message' contains exact text 'Invalid Password!'.</msg>
+<arg>id=top_message</arg>
+<arg>Invalid Password!</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-09-15T11:39:32.113482" elapsed="0.014635"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:39:32.277413" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="ts2-wrong-password.png"&gt;&lt;img src="ts2-wrong-password.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>filename=ts2-wrong-password.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-09-15T11:39:32.128484" elapsed="0.149054"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-09-15T11:39:32.277985" elapsed="2.118143"/>
+</kw>
+<status status="PASS" start="2026-09-15T11:39:31.010695" elapsed="3.385721">*HTML* Test added from merged output.</status>
+</test>
+<status status="PASS" elapsed="17.220211"/>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Ts1001-Login" id="s1" pass="5" fail="0" skip="0">Ts1001-Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

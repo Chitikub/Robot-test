@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.5 (Python 3.14.0b3 on win32)" generated="2026-09-15T11:41:50.753470" rpa="false" schemaversion="5">
+<suite id="s1" name="Ts1001-Login" source="C:\Users\Administrator\Desktop\New folder\Robot-test\tests-feature-1\ts1001-login.robot">
+<test id="s1-t1" name="Successful Login" line="8">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:41:51.046869" level="INFO">Opening browser 'chrome' to base url 'https://seleniumbase.io/simple/login'.</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-15T11:41:51.046611" elapsed="1.020469"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:41:52.067932" level="INFO">Typing text 'demo_user' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${VALID_USER}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:41:52.067495" elapsed="0.061400"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:41:52.129540" level="INFO">Typing text 'secret_pass' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${VALID_PASS}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:41:52.129261" elapsed="0.046548"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:41:52.176324" level="INFO">Clicking element 'id=log-in'.</msg>
+<arg>id=log-in</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:41:52.176098" elapsed="0.125894"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:41:52.401253" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-7.png"&gt;&lt;img src="selenium-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-09-15T11:41:52.302363" elapsed="0.098986"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-09-15T11:41:52.401776" elapsed="2.116778"/>
+</kw>
+<doc>Test case to login Successful</doc>
+<status status="PASS" start="2026-09-15T11:41:51.045400" elapsed="3.473913"/>
+</test>
+<test id="s1-t2" name="Successful Login with Validate" line="17">
+<kw name="Login with Successful" owner="keyword">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:41:54.523457" level="INFO">Opening browser 'chrome' to base url 'https://seleniumbase.io/simple/login'.</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-15T11:41:54.523285" elapsed="1.035416"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:41:55.559591" level="INFO">Typing text 'demo_user' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${VALID_USER}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:41:55.559037" elapsed="0.059877"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:41:55.619356" level="INFO">Typing text 'secret_pass' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${VALID_PASS}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:41:55.619100" elapsed="0.045807"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:41:55.665314" level="INFO">Clicking element 'id=log-in'.</msg>
+<arg>id=log-in</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:41:55.665093" elapsed="0.119557"/>
+</kw>
+<status status="PASS" start="2026-09-15T11:41:54.522914" elapsed="1.261887"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//h1</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-09-15T11:41:55.785101" elapsed="0.060668"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:41:55.846299" level="INFO">Verifying element 'xpath=//h1' contains exact text 'Senpru!'.</msg>
+<msg time="2026-09-15T11:41:55.988222" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-8.png"&gt;&lt;img src="selenium-screenshot-8.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-09-15T11:41:55.988384" level="FAIL">The text of element 'xpath=//h1' should have been 'Senpru!' but it was 'Welcome!'.</msg>
+<arg>xpath=//h1</arg>
+<arg>Senpru!</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="FAIL" start="2026-09-15T11:41:55.846059" elapsed="0.143989">The text of element 'xpath=//h1' should have been 'Senpru!' but it was 'Welcome!'.</status>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=validate1.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-09-15T11:41:55.990442" elapsed="0.000042"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-09-15T11:41:55.990864" elapsed="2.118043"/>
+</kw>
+<status status="FAIL" start="2026-09-15T11:41:54.521580" elapsed="3.588104">The text of element 'xpath=//h1' should have been 'Senpru!' but it was 'Welcome!'.</status>
+</test>
+<test id="s1-t3" name="Successful Login with Validate Text and Image" line="27">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:41:58.115349" level="INFO">Opening browser 'chrome' to base url 'https://seleniumbase.io/simple/login'.</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-15T11:41:58.114574" elapsed="1.093399"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:41:59.208512" level="INFO">Typing text 'demo_user' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${VALID_USER}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:41:59.208258" elapsed="0.057313"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:41:59.266735" level="INFO">Typing text 'secret_pass' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${VALID_PASS}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:41:59.266067" elapsed="0.047271"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:41:59.313851" level="INFO">Clicking element 'id=log-in'.</msg>
+<arg>id=log-in</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:41:59.313633" elapsed="0.128139"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Welcome!</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-09-15T11:41:59.442100" elapsed="0.051809"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:41:59.494462" level="INFO">Verifying element 'xpath=//h1' contains exact text 'Welcome!'.</msg>
+<arg>xpath=//h1</arg>
+<arg>Welcome!</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-09-15T11:41:59.494219" elapsed="0.015437"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:41:59.516810" level="INFO">Current page contains element 'id=image1'.</msg>
+<arg>id=image1</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-09-15T11:41:59.509955" elapsed="0.007052"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:41:59.609837" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="validate2.png"&gt;&lt;img src="validate2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>filename=validate2.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-09-15T11:41:59.517652" elapsed="0.092280"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-09-15T11:41:59.610263" elapsed="2.107636"/>
+</kw>
+<status status="PASS" start="2026-09-15T11:41:58.112333" elapsed="3.606006"/>
+</test>
+<status status="FAIL" start="2026-09-15T11:41:50.754836" elapsed="10.964739"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Ts1001-Login" id="s1" pass="2" fail="1" skip="0">Ts1001-Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
